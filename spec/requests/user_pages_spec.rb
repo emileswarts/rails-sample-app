@@ -3,6 +3,12 @@ require 'spec_helper'
 describe "User Pages" do
 	subject { page }
 
+	describe "index" do
+		before do
+			sign_in FactoryGirl.create(:user)
+		end
+	end
+
 	describe "Signup page" do
 		before { visit signup_path }
 		it { should have_selector('h1', text: 'Sign up')}
@@ -84,8 +90,6 @@ describe "User Pages" do
 			it { should have_link("Sign out", href: signout_path ) }
 			specify{ user.reload.name.should == new_name}
 			specify{ user.reload.email.should == new_email}
-
-
 		end
 	end
 end
