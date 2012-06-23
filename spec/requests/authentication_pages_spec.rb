@@ -30,7 +30,7 @@ describe "Authentication" do
 				end
 
 				describe "visiting the user index" do
-					before { visit user_path }
+					before { visit users_path }
 					it { should have_selector('title', text: "Sign in") }
 				end
 
